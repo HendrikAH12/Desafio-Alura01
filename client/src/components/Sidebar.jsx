@@ -32,10 +32,25 @@ const LiContainer = styled.li`
 
     & #active {
         background-color: #5081FB;
+    }
+
+    & #activeOpacity {
         opacity: 1;
     }
 
-    & #activeTitle {
+    &:hover #disable {
+        background-color: rgba(80, 129, 251, 0.64);
+    }
+
+    &:hover #disableOpacity{
+        opacity: 1;
+    }
+
+    &:active #disable {
+        background-color: #5081FB;
+    }
+
+    &:active #disableOpacity{
         opacity: 1;
     }
 `;
@@ -74,11 +89,11 @@ const Sidebar = () => {
                     return (
                         <Link to={val.link} className="link">
                             <LiContainer key={key}>
-                                <LiIconContainer id={window.location.pathname === val.link ? "active" : ""}>
-                                    <LiIcon id={window.location.pathname === val.link ? "active" : ""} src={val.icon} alt="" />
+                                <LiIconContainer id={window.location.pathname === val.link ? "active" : "disable"}>
+                                    <LiIcon id={window.location.pathname === val.link ? "activeOpacity" : "disableOpacity"} src={val.icon} alt="" />
                                 </LiIconContainer>
 
-                                <LiTitle id={window.location.pathname === val.link ? "activeTitle" : ""}>
+                                <LiTitle id={window.location.pathname === val.link ? "activeOpacity" : "disableOpacity"}>
                                     {val.title}
                                 </LiTitle>
                             </LiContainer>

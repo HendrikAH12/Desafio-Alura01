@@ -18,7 +18,6 @@ const TextAreaContainer = styled.div`
     background-color: ${(props) => props.color};
     height: 366px;
     border-radius: 8px;
-    margin-bottom: 32px;
 `;
 
 const TextAreaSubContainer = styled.div`
@@ -67,6 +66,20 @@ const Button = styled.button`
     font-weight: normal;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 32px;
+
+    &:hover {
+        background-color: rgba(80, 129, 251, 0.16);
+    }
+
+    &:active {
+        margin-top: 28px;
+        border: 4px solid rgba(80, 129, 251, 0.24);
+    }
+
+    &:focus {
+        background: rgba(80, 129, 251, 0.24);
+    }
 `;
 
 const FormContainer = styled.div`
@@ -103,6 +116,10 @@ const FormInput = styled.input`
         opacity: 0.64;
     }
     margin-bottom: 16px;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.24);
+    }
 `;
 
 const FormTextArea = styled.textarea`
@@ -121,6 +138,10 @@ const FormTextArea = styled.textarea`
     }
     margin-bottom: 40px;
     resize: none;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.24);
+    }
 `;
 
 const FormSelect = styled.select`
@@ -135,6 +156,10 @@ const FormSelect = styled.select`
     color: rgba(255,255,255, 0.64);
     margin-bottom: 16px;
     border-right: .6rem solid rgba(255, 255, 255, 0.0);
+    
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.24);
+    }
 `;
 
 const FormOption = styled.option`
@@ -146,7 +171,6 @@ const FormColorContainer = styled.div`
     border: 1px solid #FFFFFF;
     border-radius: 8px;
     box-sizing: border-box;
-    margin-bottom: ${(props) => props.margin};
 `;
 
 const FormColorBottun  = styled.button`
@@ -162,7 +186,7 @@ const FormColorBottun  = styled.button`
 const ColorPickerContainer = styled.div`
     align-items: center;
     justify-content: center;
-    margin-bottom: 32px;
+    margin-top: 16px;
 `;
 
 const FormButton = styled.button`
@@ -176,17 +200,29 @@ const FormButton = styled.button`
     cursor: pointer;
     color: #051D3B;
     background-color: #5081FB;
+    margin-top: 32px;
+
+    &:hover {
+        background-color: #7BA4FC;
+    }
+
+    &:active {
+        margin-top: 28px;
+        border: 4px solid rgba(80, 129, 251, 0.72);
+    }
+
+    &:focus {
+        background: #96B9FD;
+    }
 `;
 
 const ProjectContent = () => {
     const [background, setBackground] = useState("#6BD1FF");
     const [showColerPiker, setShowColerPiker] = useState("none");
-    const [margin, setMargin] = useState("32px");
-
 
     const callColerPicker = () => {
-        setShowColerPiker("flex");
-        setMargin("16px");
+        if (showColerPiker === "none") setShowColerPiker("");
+        else setShowColerPiker("none");
     };
 
     return (
@@ -221,7 +257,7 @@ const ProjectContent = () => {
                         <FormOption>Python</FormOption>
                     </FormSelect>
 
-                    <FormColorContainer margin={margin}>
+                    <FormColorContainer>
                         <FormColorBottun color={background} onClick={callColerPicker}></FormColorBottun>
                     </FormColorContainer>
 

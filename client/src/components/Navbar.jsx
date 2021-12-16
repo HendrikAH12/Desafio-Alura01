@@ -37,6 +37,11 @@ const Input = styled.input`
     background-color: rgba(255, 255, 255, 0.16);
     padding: 16px 14px;
     width: 100%;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.24);
+    }
+
     &::placeholder {
         color: #FFFFFF;
         opacity: 0.64;
@@ -46,11 +51,28 @@ const Input = styled.input`
 const Right = styled.div`
     flex: 1;
     display: flex;
-    align-items: center;
     justify-content: flex-end;
 `;
 
+const UserContainer = styled.div`
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+`;
+
+const Avatar = styled.img`
+    width: 32px;
+    height: 32px;
+    padding: 12px 4px 12px 12px;
+    cursor: pointer;
+`;
+
 const Username = styled.span`
+    padding: 16px 16px 16px 4px;
     margin-left: 8px;
     font-size: 16px;
     font-weight: 400;
@@ -70,8 +92,10 @@ const Navbar = () => {
                 </Center>
 
                 <Right>
-                    <img style={{cursor: "pointer"}} src={avatar} alt=""/>
-                    <Username>Harry</Username>
+                    <UserContainer>
+                        <Avatar src={avatar} alt=""/>
+                        <Username>Harry</Username>
+                    </UserContainer>
                 </Right>
             </Wrapper>
         </Container>

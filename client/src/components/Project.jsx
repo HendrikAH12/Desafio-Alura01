@@ -3,15 +3,22 @@ import avatar from "../assets/Photo.png";
 import messageIcon from "../assets/MessageIcon.png";
 import heartIcon from "../assets/HeartIcon.png";
 
+const InfoSubContainer = styled.div`
+    display: none;
+    justify-content: space-between;
+`;
+
 const Container = styled.div`
     flex: 1;
     min-width: 520px;
-    height: 464px;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.16);
     color: #FFFFFF;
     border-radius: 8px;
     flex-direction: column;
+    &:hover ${InfoSubContainer} {
+        display: flex;
+        margin-top: 32px;
+    }
 `;
 
 const TextAreaContainer = styled.div`
@@ -61,6 +68,8 @@ const InfoContainer = styled.div`
     display: flex;
     padding: 24px 24px 32px 24px;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.16);
+    border-radius: 0px 0px 8px 8px;
 `;
 
 const InfoTitle = styled.h1`
@@ -75,13 +84,7 @@ const InfoDesc = styled.span`
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
-    margin-bottom: 32px;
     opacity: 0.8;
-`;
-
-const InfoSubContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
 `;
 
 const Left = styled.div`
@@ -89,6 +92,24 @@ const Left = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+`;
+
+const IconContainer = styled.div`
+    display: flex;
+    padding: 11.5px 8px 11.5px 10px;
+    border-radius: 16px;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    &:active {
+        background-color: rgba(255, 255, 255, 0.16);
+    }
+`;
+
+const Icon = styled.img`
+    margin-right: 10px;
 `;
 
 const Right = styled.div`
@@ -130,10 +151,15 @@ const Project = (background) => {
                 <InfoDesc>Essa é a descrição do meu projeto.</InfoDesc>
                 <InfoSubContainer>
                     <Left>
-                        <img style={{marginRight: "10px"}} src={messageIcon} alt="" />
-                        9
-                        <img style={{marginRight: "10px", marginLeft: "18px"}} src={heartIcon} alt="" />
-                        9
+                        <IconContainer>
+                            <Icon src={messageIcon} alt="" />
+                            9
+                        </IconContainer>
+
+                        <IconContainer>
+                            <Icon src={heartIcon} alt="" />
+                            9
+                        </IconContainer>
                     </Left>
                     
                     <Right>
