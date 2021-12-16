@@ -14,7 +14,7 @@ const ProjectCreate = () => {
         <>
             <Navbar />
             <Container>
-                <Sidebar active="1" />
+                <Sidebar />
                 <ProjectContent />
             </Container>
         </>

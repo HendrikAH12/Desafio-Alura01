@@ -6,7 +6,6 @@ const Container = styled.div`
     color: #FFFFFF;
     display: flex;
     flex: 3;
-    margin-left: 20px;
 `;
 
 const Center = styled.div`

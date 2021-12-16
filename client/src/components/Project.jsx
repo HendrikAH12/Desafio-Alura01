@@ -10,7 +10,6 @@ const Container = styled.div`
     display: flex;
     background-color: rgba(0, 0, 0, 0.16);
     color: #FFFFFF;
-    margin: 0px 12px 24px 12px;
     border-radius: 8px;
     flex-direction: column;
 `;
@@ -89,6 +88,7 @@ const Left = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 `;
 
 const Right = styled.div`

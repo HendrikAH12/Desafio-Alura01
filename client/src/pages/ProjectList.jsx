@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar";
 
 const Container = styled.div`
     display: flex;
-    padding: 0px 20px 8px 32px;
+    padding: 0px 32px 32px 32px;
     background-color: #051D3B;
 `;
 
@@ -14,7 +14,7 @@ const ProjectList = () => {
         <>
             <Navbar />
             <Container>
-                <Sidebar active="2" />
+                <Sidebar />
                 <Projects />
             </Container>
         </>

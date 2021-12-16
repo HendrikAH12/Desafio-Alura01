@@ -19,7 +19,6 @@ const Left = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
-    padding-right: 20px;
 `;
 
 const Center = styled.div`

@@ -1,9 +1,6 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
-import codeIcon from "../assets/CodeIcon.png";
-import communityIcon from "../assets/CommunityIcon.png";
+import { SidebarData } from "../SidebarData";
 import { Link } from "react-router-dom";
-import "../app.css";
 
 const Container = styled.div`
     flex: 1;
@@ -22,73 +19,73 @@ const Title = styled.h3`
     margin-bottom: 16px;
 `;
 
-const MenuContainer = styled.div`
-    display: flex;
+const UlContainer = styled.ul`
+    list-style: none;
+    padding: 0px;
+    flex-direction: column;
 `;
 
-const MenuIconContainer = styled.div`
-    width: 48px;
-    height: 48px;
-    border-radius: 16px;
+const LiContainer = styled.li`
+    display: flex;
     margin-bottom: 16px;
-    background-color: ${(props) => props.color};
+    align-items: center;
+
+    & #active {
+        background-color: #5081FB;
+        opacity: 1;
+    }
+
+    & #activeTitle {
+        opacity: 1;
+    }
+`;
+
+const LiIconContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    margin-right: 16px;
+    background-color: rgba(80, 129, 251, 0.16);
 `;
 
-const MenuIcon = styled.img`
-    opacity: ${(props) => props.opacity};
+const LiIcon = styled.img`
+    opacity: 0.56;
 `;
 
-const MenuInfo = styled.h3`
-    color: ${(props) => props.color};
-    opacity: ${(props) => props.opacity};
+const LiTitle = styled.h3`
+    color: #FFFFFF;
+    opacity: 0.56;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     font-weight: 400;
-    padding: 16px;
-    cursor: pointer;
 `;
 
-const Sidebar = (active) => {
-    const [backgroundCode, setBackgroundCode] = useState("rgba(80, 129, 251, 0.16)");
-    const [opacityCode, setOpacityCode] = useState("0.56");
-    const [backgroundCommunity, setBackgroundCommunity] = useState("rgba(80, 129, 251, 0.16)");
-    const [opacityCommunity, setOpacityCommunity] = useState("0.56");
-
-    useEffect(() => {
-        if (active.active === "1") {
-            setBackgroundCode("#5081FB");
-            setOpacityCode("1");
-        } else {
-            setBackgroundCommunity("#5081FB");
-            setOpacityCommunity("1");
-        }
-    }, [active]);
-
+const Sidebar = () => {
     return (
         <Container>
             <Title>Menu</Title>
-            <Link to="/project/create" className="link">
-                <MenuContainer>
-                    <MenuIconContainer color={backgroundCode}>
-                        <MenuIcon opacity={opacityCode} src={codeIcon} alt="" />
-                    </MenuIconContainer>
-                    <MenuInfo color="#FFFFFF" opacity={opacityCode}>Editor de código</MenuInfo>
-                </MenuContainer>
-            </Link>
+            
+            <UlContainer>
+                {SidebarData.map((val, key) => {
+                    return (
+                        <Link to={val.link} className="link">
+                            <LiContainer key={key}>
+                                <LiIconContainer id={window.location.pathname === val.link ? "active" : ""}>
+                                    <LiIcon id={window.location.pathname === val.link ? "active" : ""} src={val.icon} alt="" />
+                                </LiIconContainer>
 
-            <Link to="/projects" className="link">
-                <MenuContainer>
-                    <MenuIconContainer color={backgroundCommunity}>
-                        <MenuIcon opacity={opacityCommunity} src={communityIcon} alt="" />
-                    </MenuIconContainer>
-                    <MenuInfo color="#FFFFFF" opacity={opacityCommunity}>Comunidade</MenuInfo>
-                </MenuContainer>
-            </Link>
+                                <LiTitle id={window.location.pathname === val.link ? "activeTitle" : ""}>
+                                    {val.title}
+                                </LiTitle>
+                            </LiContainer>
+                        </Link>
+                    );
+                })}
+            </UlContainer>
         </Container>
     );
 }
