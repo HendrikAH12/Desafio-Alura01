@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import logo from "../assets/Logo.png";
 import avatar from "../assets/Photo.png";
+import { tablet, mobile } from "../responsive";
 
 const Container = styled.div`
     height: 128px;
     color: #FFFFFF;
     background-color: #051D3B;
+    ${tablet({ height: "125px" })};
+    ${mobile({ height: "90px" })};
 `;
 
 const Wrapper = styled.div`
@@ -13,18 +16,23 @@ const Wrapper = styled.div`
     display: flex;
     aligm-items: center;
     justify-content: space-between;
+    ${tablet({ padding: "43px 32px 50px 32px" })};
+    ${mobile({ padding: "27px 16px 32px 16px" })};
 `;
 
 const Left = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
+    ${tablet({ flex: 2 })};
 `;
 
 const Center = styled.div`
     flex: 2;
     display: flex;
     align-items: center;
+    ${tablet({ flex: 3 })};
+    ${mobile({ display: "none" })};
 `;
 
 const Input = styled.input`
@@ -52,12 +60,14 @@ const Right = styled.div`
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    ${tablet({ display: "none" })};
 `;
 
 const UserContainer = styled.div`
     display: flex;
     align-items: center;
     border-radius: 8px;
+    margin-left: 40px;
 
     &:hover {
         background-color: rgba(255, 255, 255, 0.08);
@@ -84,7 +94,7 @@ const Navbar = () => {
         <Container>
             <Wrapper>
                 <Left>
-                    <img style={{cursor: "pointer"}} src={logo} alt=""/>
+                    <img style={{cursor: "pointer", marginRight: "40px"}} src={logo} alt=""/>
                 </Left>
 
                 <Center>

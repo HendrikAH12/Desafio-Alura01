@@ -1,5 +1,5 @@
 import codeIcon from "./assets/CodeIcon.png";
-import communityIcon from "./assets/CommunityIcon.png"
+import communityIcon from "./assets/CommunityIcon.png";
 
 export const SidebarData = [
     {
@@ -13,3 +13,4 @@ export const SidebarData = [
         link: "/projects"
     }
 ];
+

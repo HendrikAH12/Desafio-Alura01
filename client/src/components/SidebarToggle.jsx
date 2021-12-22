@@ -4,7 +4,7 @@ const Container = styled.div`
 
 `;
 
-const MenuToggle = () => {
+const SidebarToggle = () => {
     return (
         <Container>
             
@@ -12,4 +12,4 @@ const MenuToggle = () => {
     );
 }
 
-export default MenuToggle;
+export default SidebarToggle;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Project from "./Project";
+import { tablet } from "../responsive.js";
 
 const Container = styled.div`
     background-color: #051D3B;
@@ -7,6 +8,7 @@ const Container = styled.div`
     flex: 3;
     flex-wrap: wrap;
     gap: 24px;
+    ${tablet({ flex: 1 })};
 `;
 
 const Projects = () => {

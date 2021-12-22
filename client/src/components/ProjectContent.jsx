@@ -1,15 +1,18 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { HexColorPicker } from "react-colorful";
+import { tablet, mobile } from "../responsive.js";
 
 const Container = styled.div`
     color: #FFFFFF;
     display: flex;
     flex: 3;
+    ${tablet({ flex: 1, flexDirection: "column" })};
 `;
 
 const Center = styled.div`
     flex: 2;
+    ${tablet({ flex: 1 })};
 `;
 
 const TextAreaContainer = styled.div`
@@ -29,6 +32,8 @@ const TextAreaSubContainer = styled.div`
     padding: 16px;
     align-items: center;
     justify-content: center;
+    ${tablet({ margin: "28px" })};
+    ${mobile({ margin: "24px" })};
 `
 
 const ColorContainer = styled.div`
@@ -67,6 +72,7 @@ const Button = styled.button`
     font-size: 16px;
     cursor: pointer;
     margin-top: 32px;
+    margin-bottom: 40px;
 
     &:hover {
         background-color: rgba(80, 129, 251, 0.16);
@@ -88,7 +94,9 @@ const FormContainer = styled.div`
 `;
 
 const Form = styled.div`
+    width: 100%;
     margin-left: 40px;
+    ${tablet({ marginLeft: "0px" })};
 `;
 
 const FormTitle = styled.h3`
@@ -218,12 +226,14 @@ const FormButton = styled.button`
 
 const ProjectContent = () => {
     const [background, setBackground] = useState("#6BD1FF");
-    const [showColerPiker, setShowColerPiker] = useState("none");
+    const [displayColerPiker, setDisplayColerPiker] = useState("none");
 
-    const callColerPicker = () => {
-        if (showColerPiker === "none") setShowColerPiker("");
-        else setShowColerPiker("none");
+    const showColerPicker = () => {
+        if (displayColerPiker === "none") setDisplayColerPiker("");
+        else setDisplayColerPiker("none");
     };
+
+
 
     return (
         <Container>
@@ -258,10 +268,10 @@ const ProjectContent = () => {
                     </FormSelect>
 
                     <FormColorContainer>
-                        <FormColorBottun color={background} onClick={callColerPicker}></FormColorBottun>
+                        <FormColorBottun color={background} onClick={showColerPicker}></FormColorBottun>
                     </FormColorContainer>
 
-                    <ColorPickerContainer style={{display: showColerPiker}}>
+                    <ColorPickerContainer style={{display: displayColerPiker}}>
                         <HexColorPicker style={{width: "100%"}} color={background}
                         onChange={setBackground}/>
                     </ColorPickerContainer>

@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import { SidebarData } from "../SidebarData";
+import { SidebarData } from "../sidebarData";
 import { Link } from "react-router-dom";
+import { tablet } from "../responsive.js";
 
 const Container = styled.div`
     flex: 1;
     top: 128px;
     height: calc(100vh - 160px);
     background-color: #051D3B;
+    ${tablet({ display: "none" })};
 `;
 
 const Title = styled.h3`
@@ -23,6 +25,8 @@ const UlContainer = styled.ul`
     list-style: none;
     padding: 0px;
     flex-direction: column;
+    margin-right: 40px;
+    width: 100%;
 `;
 
 const LiContainer = styled.li`
@@ -62,8 +66,8 @@ const LiIconContainer = styled.div`
     width: 48px;
     height: 48px;
     border-radius: 16px;
-    margin-right: 16px;
     background-color: rgba(80, 129, 251, 0.16);
+    margin-right: 16px;
 `;
 
 const LiIcon = styled.img`
