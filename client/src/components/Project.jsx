@@ -25,6 +25,7 @@ const InfoSubContainer = styled.div`
 const Container = styled.div`
     flex: 1;
     min-width: 520px;
+    max-width: calc(50% - 12px);
     display: flex;
     color: #FFFFFF;
     border-radius: 8px;
@@ -41,8 +42,8 @@ const Container = styled.div`
     &:hover ${InfoSubContainer} {
         visibility: visible;
     }
-    ${tablet({ minWidth: "510px" })};
-    ${mobile({ minWidth: "340px" })};
+    ${tablet({ minWidth: "510px", maxWidth: "100%" })};
+    ${mobile({ minWidth: "340px", maxWidth: "100%" })};
 `;
 
 const Top = styled.div`
@@ -157,7 +158,7 @@ const Avatar = styled.img`
     cursor: pointer;
 `;
 
-const Project = (background) => {
+const Project = ({color, content, title, desc}) => {
     const [heartColor, setHeartColor] = useState("white");
     
     const activeHeart = () => {
@@ -168,22 +169,22 @@ const Project = (background) => {
     return (
         <Container>
             <Top>
-                <TextAreaContainer color={background.color}>
+                <TextAreaContainer color={color}>
                     <TextAreaSubContainer>
                         <ColorContainer>
                             <Color color="#FF5F56" />
                             <Color color="#FFBD2E" />
                             <Color color="#27C93F" />
                         </ColorContainer>
-                        <TextArea rows="12" disabled />
+                        <TextArea rows="12" disabled value={content}/>
                     </TextAreaSubContainer>
                 </TextAreaContainer>
             </Top>
 
             <InfoContainer>
                 <Center>
-                    <InfoTitle>Título do projeto</InfoTitle>
-                    <InfoDesc>Essa é a descrição do meu projeto.</InfoDesc>
+                    <InfoTitle>{title}</InfoTitle>
+                    <InfoDesc>{desc}</InfoDesc>
                 </Center>
 
                 <Bottom>

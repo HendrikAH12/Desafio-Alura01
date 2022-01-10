@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import logo from "../assets/Logo.png";
 import avatar from "../assets/Photo.png";
+import searchIcon from "../assets/SearchIcon.png";
+import menuIcon from "../assets/MenuIcon.png";
 import { tablet, mobile } from "../responsive";
 
 const Container = styled.div`
-    height: 128px;
     color: #FFFFFF;
     background-color: #051D3B;
-    ${tablet({ height: "125px" })};
-    ${mobile({ height: "90px" })};
 `;
 
 const Wrapper = styled.div`
@@ -16,22 +15,21 @@ const Wrapper = styled.div`
     display: flex;
     aligm-items: center;
     justify-content: space-between;
-    ${tablet({ padding: "43px 32px 50px 32px" })};
-    ${mobile({ padding: "27px 16px 32px 16px" })};
+    ${tablet({ padding: "43px 32px 32px 32px" })};
+    ${mobile({ padding: "20px 16px 20px 16px" })};
 `;
 
 const Left = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
-    ${tablet({ flex: 2 })};
 `;
 
 const Center = styled.div`
     flex: 2;
     display: flex;
     align-items: center;
-    ${tablet({ flex: 3 })};
+    ${tablet({ flex: 8 })};
     ${mobile({ display: "none" })};
 `;
 
@@ -39,6 +37,7 @@ const Input = styled.input`
     box-sizing: border-box;
     border: none;
     border-radius: 8px;
+    color: #FFFFFF;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -60,7 +59,6 @@ const Right = styled.div`
     flex: 1;
     display: flex;
     justify-content: flex-end;
-    ${tablet({ display: "none" })};
 `;
 
 const UserContainer = styled.div`
@@ -72,6 +70,7 @@ const UserContainer = styled.div`
     &:hover {
         background-color: rgba(255, 255, 255, 0.08);
     }
+    ${tablet({ display: "none" })};
 `;
 
 const Avatar = styled.img`
@@ -87,6 +86,43 @@ const Username = styled.span`
     font-size: 16px;
     font-weight: 400;
     cursor: pointer;
+`;
+
+const SearchContainer = styled.div`
+    display: none;
+    align-items: center;
+    border-radius: 16px;
+    cursor: pointer;
+    padding: 16px;
+
+    &:hover {
+        background-color: rgba(80, 129, 251, 0.08);
+    }
+
+    &:active {
+        background-color: rgba(80, 129, 251, 0.16);
+    }
+
+    ${mobile({ display: "flex" })};
+`;
+
+const MenuContainer = styled.div`
+    display: none;
+    align-items: center;
+    border-radius: 16px;
+    padding: 14px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(80, 129, 251, 0.08);
+    }
+
+    &:active {
+        background-color: rgba(80, 129, 251, 0.16);
+    }
+
+    ${tablet({ display: "flex", marginLeft: 40 })};
+    ${mobile({ display: "flex", marginLeft: 0 })};
 `;
 
 const Navbar = () => {
@@ -106,6 +142,14 @@ const Navbar = () => {
                         <Avatar src={avatar} alt=""/>
                         <Username>Harry</Username>
                     </UserContainer>
+
+                    <SearchContainer>
+                        <img src={searchIcon} alt="" />
+                    </SearchContainer>
+
+                    <MenuContainer>
+                        <img src={menuIcon} alt="" />
+                    </MenuContainer>
                 </Right>
             </Wrapper>
         </Container>

@@ -6,7 +6,7 @@ import { tablet } from "../responsive.js";
 const Container = styled.div`
     flex: 1;
     top: 128px;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 152px);
     background-color: #051D3B;
     ${tablet({ display: "none" })};
 `;
@@ -89,16 +89,16 @@ const Sidebar = () => {
             <Title>Menu</Title>
             
             <UlContainer>
-                {SidebarData.map((val, key) => {
+                {SidebarData.map((item) => {
                     return (
-                        <Link to={val.link} className="link">
-                            <LiContainer key={key}>
-                                <LiIconContainer id={window.location.pathname === val.link ? "active" : "disable"}>
-                                    <LiIcon id={window.location.pathname === val.link ? "activeOpacity" : "disableOpacity"} src={val.icon} alt="" />
+                        <Link to={item.link} className="link" key={item.id}>
+                            <LiContainer>
+                                <LiIconContainer id={window.location.pathname === item.link ? "active" : "disable"}>
+                                    <LiIcon id={window.location.pathname === item.link ? "activeOpacity" : "disableOpacity"} src={item.icon} alt="" />
                                 </LiIconContainer>
 
-                                <LiTitle id={window.location.pathname === val.link ? "activeOpacity" : "disableOpacity"}>
-                                    {val.title}
+                                <LiTitle id={window.location.pathname === item.link ? "activeOpacity" : "disableOpacity"}>
+                                    {item.title}
                                 </LiTitle>
                             </LiContainer>
                         </Link>

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Project from "./Project";
 import { tablet } from "../responsive.js";
@@ -12,12 +13,16 @@ const Container = styled.div`
 `;
 
 const Projects = () => {
+    const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+        if (localStorage.getItem("ProjectList") === null) localStorage.setItem("ProjectList", JSON.stringify([]));
+        setProjects(JSON.parse(localStorage.getItem("ProjectList")));
+    }, []);
+
     return (
         <Container>
-            <Project color="#9AFF6B" />
-            <Project color="#6B83FF" />
-            <Project color="#FFC46B" />
-            <Project color="#FF6BCD" />
+            {projects.map((item) => <Project key={item.id} color={item.color} content={item.content} title={item.title} desc={item.desc} />)}
         </Container>
     );
 }

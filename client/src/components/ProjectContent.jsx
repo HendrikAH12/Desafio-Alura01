@@ -2,6 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { HexColorPicker } from "react-colorful";
 import { tablet, mobile } from "../responsive.js";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import { theme } from "../theme";
 
 const Container = styled.div`
     color: #FFFFFF;
@@ -16,7 +18,7 @@ const Center = styled.div`
 `;
 
 const TextAreaContainer = styled.div`
-    display: flex;
+    display: ${(props) => props.display};
     width: 100%;
     background-color: ${(props) => props.color};
     height: 366px;
@@ -58,6 +60,8 @@ const TextArea = styled.textarea`
     font-style: normal;
     font-weight: 400;
     color: #FFFFFF;
+    font-size: 16px;
+    white-space: nowrap;
 `;
 
 const Button = styled.button`
@@ -80,6 +84,7 @@ const Button = styled.button`
 
     &:active {
         margin-top: 28px;
+        margin-bottom: 36px;
         border: 4px solid rgba(80, 129, 251, 0.24);
     }
 
@@ -114,6 +119,7 @@ const FormInput = styled.input`
     box-sizing: border-box;
     border: none;
     border-radius: 8px;
+    color: #FFFFFF;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -135,6 +141,7 @@ const FormTextArea = styled.textarea`
     box-sizing: border-box;
     border: none;
     border-radius: 8px;
+    color: #FFFFFF;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -224,47 +231,132 @@ const FormButton = styled.button`
     }
 `;
 
+const HighlightContainer = styled.div`
+    display: ${(props) => props.display};
+    padding: 32px;
+    background-color: ${(props) => props.color};
+    border-radius: 8px;
+    ${tablet({ padding: "28px" })};
+    ${mobile({ padding: "24px" })};
+`;
+
+const HighlightScrollContainer = styled.div`
+    padding: 16px;
+    height: 270px;
+    overflow-y: scroll;
+    font-size: 14px;
+    border-radius: 8px;
+    background-color: #141414;
+    width: 100%;
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.24);
+    ${tablet({ height: "278px" })};
+    ${mobile({ height: "286px" })};
+`;
+
 const ProjectContent = () => {
     const [background, setBackground] = useState("#6BD1FF");
     const [displayColerPiker, setDisplayColerPiker] = useState("none");
+    const [textArea, setTextArea] = useState("");
+    const [projectName, setProjectName] = useState("");
+    const [projectDesc, setProjectDesc] = useState("");
+    const [option, setOption] = useState("C");
 
     const showColerPicker = () => {
         if (displayColerPiker === "none") setDisplayColerPiker("");
         else setDisplayColerPiker("none");
     };
 
+    const saveInfo = () => {
+        let data = {
+            id: Date.now(),
+            content: textArea,
+            title: projectName,
+            desc: projectDesc,
+            language: option,
+            color: background
+        };
+        
+        let dataArray = [];
 
+        if (localStorage.hasOwnProperty("ProjectList")) {
+            dataArray = JSON.parse(localStorage.getItem("ProjectList"));
+        }
+
+        dataArray.push(data);
+        localStorage.setItem("ProjectList", JSON.stringify(dataArray));
+    }
+
+    const [textAreaDisplay, setTextAreaDisplay] = useState("flex");
+    const [highlightDisplay, setHighlightDisplay] = useState("none");
+
+    const showHighlight = () => {
+        if (textAreaDisplay === "flex") { 
+            setTextAreaDisplay("none"); 
+            setHighlightDisplay("flex"); 
+        } else {
+            setTextAreaDisplay("flex");
+            setHighlightDisplay("none");
+        }
+    }
 
     return (
         <Container>
             <Center>
-                <TextAreaContainer color={background}>
+                <TextAreaContainer color={background} display={textAreaDisplay}>
                     <TextAreaSubContainer>
                         <ColorContainer>
                             <Color color="#FF5F56" />
                             <Color color="#FFBD2E" />
                             <Color color="#27C93F" />
                         </ColorContainer>
-                        <TextArea rows="14" />
+
+                        <TextArea rows="13" onChange={(e) => setTextArea(e.target.value)} />
                     </TextAreaSubContainer>
                 </TextAreaContainer>
-                <Button>Visualizar com o highlight</Button>
+
+                <HighlightContainer display={highlightDisplay} color={background}>
+                    <HighlightScrollContainer>
+                        <ColorContainer>
+                            <Color color="#FF5F56" />
+                            <Color color="#FFBD2E" />
+                            <Color color="#27C93F" />
+                        </ColorContainer>
+
+                        <Highlight {...defaultProps} code={textArea.trim()} language={option} theme={theme} >
+                            {({ className, tokens, getLineProps, getTokenProps }) => (
+                                <pre className={className} style={{width: "0"}}>
+                                    {tokens.map((line, i) => (
+                                        <div {...getLineProps({ line, key: i })}>
+                                            {line.map((token, key) => (
+                                                <span {...getTokenProps({ token, key })} />
+                                            ))}
+                                        </div>
+                                    ))}
+                                </pre>
+                            )}
+                        </Highlight>
+                    </HighlightScrollContainer>
+                </HighlightContainer>
+
+                <Button onClick={showHighlight}>Visualizar com o highlight</Button>
             </Center>
 
             <FormContainer>
                 <Form>
                     <FormTitle>Seu Projeto</FormTitle>
 
-                    <FormInput placeholder="Nome do seu projeto" />
-                    <FormTextArea rows="2" placeholder="Descrição do seu projeto" />
+                    <FormInput placeholder="Nome do seu projeto" onChange={(e) => setProjectName(e.target.value)} />
+                    <FormTextArea rows="2" placeholder="Descrição do seu projeto" onChange={(e) => setProjectDesc(e.target.value)} />
 
                     <FormTitle>Personalização</FormTitle>
 
-                    <FormSelect defaultValue="JavaScript">
-                        <FormOption>C++</FormOption>
-                        <FormOption>C#</FormOption>
-                        <FormOption>JavaScript</FormOption>
-                        <FormOption>Python</FormOption>
+                    <FormSelect onChange={(e) => setOption(e.target.value)}>
+                        <FormOption value="c">C</FormOption>
+                        <FormOption value="css">CSS</FormOption>
+                        <FormOption value="html">HTML</FormOption>
+                        <FormOption value="javascript">JS</FormOption>
+                        <FormOption value="jsx">JSX</FormOption>
+                        <FormOption value="python">Python</FormOption>
                     </FormSelect>
 
                     <FormColorContainer>
@@ -276,7 +368,7 @@ const ProjectContent = () => {
                         onChange={setBackground}/>
                     </ColorPickerContainer>
 
-                    <FormButton>Salvar projeto</FormButton>
+                    <FormButton onClick={saveInfo}>Salvar projeto</FormButton>
                 </Form>
             </FormContainer>
         </Container>
