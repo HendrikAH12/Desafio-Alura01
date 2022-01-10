@@ -7,7 +7,7 @@ const Container = styled.div`
 `;
 
 
-const Styleguild = () => {
+const StyleGuildContent = () => {
     return (
         <Container>
           XXXXXX  
@@ -15,4 +15,4 @@ const Styleguild = () => {
     )
 };
 
-export default Styleguild;
+export default StyleGuildContent;
