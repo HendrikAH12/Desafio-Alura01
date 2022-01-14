@@ -70,4 +70,4 @@ O que pretendo fazer:
 
 - [Hendrik Abdalla Hermann](https://github.com/HendrikAH12/)
 - [Eduardo Vinicius Rodrigues Prado](https://github.com/DuVRP/)
-- [Julia ](/)
+- [Julia Cabral Veloso ](https://github.com/jcvalura/)
