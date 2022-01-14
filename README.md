@@ -6,7 +6,7 @@ Alura Dev é um editor de código que te permite compartilhar códigos de forma 
 
 ## Como rodar o projeto
 
-Primeiramente é necessário ter o node js instalado, com o node instalado, clone o projeto com `git clone https://github.com/HendrikAH12/Desafio-Alura`, após clonar o projeto, no console do seu editor de código digite o seguinte comando `npm install` para instalar todas as dependencias, e em seguida use `npm start` para iniciar o projeto :D
+Primeiramente é necessário ter o node js instalado, com o node instalado, clone o projeto com `git clone https://github.com/HendrikAH12/Desafio-Alura`, após clonar o projeto, no console do seu editor de código digite o seguinte comando `cd client` e depois `npm install` para instalar todas as dependencias, e em seguida use `npm start` para iniciar o projeto :D
 
 ## Como utilizar
 
@@ -18,8 +18,6 @@ Primeiramente é necessário ter o node js instalado, com o node instalado, clon
 
  - Para visualizar o seu projeto, basta clicar na aba "Comunidade" no menu da esquerda que lá estará todos os seus projetos criados.
 
- - Para salvar o seu código em alguma extensão, clique em "Coverter para imagem!" e escolha a extensão desejada e em seguida clique em "ok".
-
 ### O Challenge
 
 Os usuarios serão capazes de:
@@ -30,26 +28,19 @@ Os usuarios serão capazes de:
 - Verificar seu projeto na aba comunidades
 - Projetos permanecerem na aba comunidades.
 
-### Screenshot
-
-![](. ..)
-
 ### Links
 
-- Site hospedado: [Alura Dev](.../)
+- Site hospedado: [Alura Dev]deploy deu erro
 
-### Construito com
+### Construido com
 
 - Flexbox
 - [React](https://reactjs.org/) - JS library
-- Framework
 
 ### O que eu aprendi
 
 - Utilizar bibliotecas como:
-  - [Highlight JS](https://highlightjs.org/)
-  - [File Saver](https://github.com/eligrey/FileSaver.js/)
-  - [Dom to image](https://github.com/tsayen/dom-to-image)
+- [Highlight JS](https://highlightjs.org/)
 - Desenvolvimento em grupo, ajudando e sendo ajudado no discord.
 - Utilizar o trello para organizar minhas tarefas.
 
@@ -70,4 +61,4 @@ O que pretendo fazer:
 
 - [Hendrik Abdalla Hermann](https://github.com/HendrikAH12/)
 - [Eduardo Vinicius Rodrigues Prado](https://github.com/DuVRP/)
-- [Julia Cabral Veloso ](https://github.com/jcvalura/)
+- [Julia Cabral Veloso](https://github.com/jcvalura/)
