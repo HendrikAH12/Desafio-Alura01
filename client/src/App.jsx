@@ -7,9 +7,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/project/create" element={<ProjectCreate />}></Route>
-        <Route path="/projects" element={<ProjectList />}></Route>
-        <Route path="/styleguild" element={<StyleGuild />}></Route>
+        <Route path="Desafio-Alura/project/create" element={<ProjectCreate />}></Route>
+        <Route path="Desafio-Alura/projects" element={<ProjectList />}></Route>
+        <Route path="Desafio-Alura/styleguild" element={<StyleGuild />}></Route>
       </Routes>
     </Router>
   );
